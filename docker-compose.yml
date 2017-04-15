@@ -1,0 +1,20 @@
+version: '2'
+services:
+  janus:
+    build: janus
+    volumes:
+      - janus-volume:/opt/janus/etc/janus/
+      - janus-volume:/var/log/janus.log
+    ports:
+      - 7088:7088
+      - 8088:8088
+      - 8188:8188
+      - 7889:7889
+      - 8089:8089
+  nginx:
+    build: nginx
+    ports:
+    - 80:80
+    - 443:443
+volumes:
+  janus-volume:
